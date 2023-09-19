@@ -1,8 +1,39 @@
-# Getting Started with Create React App
+![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
+![Security Status](https://img.shields.io/security-headers?label=Security&url=https%3A%2F%2Fgithub.com&style=flat-square)
+![Gluten Status](https://img.shields.io/badge/Gluten-Free-green.svg)
+![Eco Status](https://img.shields.io/badge/ECO-Friendly-green.svg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Mašinų taisymas
+
+
+<br>
+Darbui naudojome:
+
+README, Admin, Public, Frontend made with: HTML, CSS/Bootstrap, JavaScript, React, Backend made with: Node.js/Express.js, MySQL, REST API, Responsive design, SPA, Form validations with clear misrepresentations of messages
+
+Darbo užduotys: Pages, Components, Register page, Register form validations, Server API, Database (user table), Login page, Login form validations, Cookies, Public auto list, Like/Unlike button with API and Database, Serice workes search, Service worker can be liked with heart, Company Name, Company Logo
+
+
+Autorius: Milda Zakarkaite: [Github](https://github.com/ZakarkaiteMilda/Bandymas---CRUD)
+
+
+Distributed under the MIT License. See LICENSE.txt for more information.
+
+Kaip pasileisti projekta:
+
+
+ Clone the repo
+    ```sh
+    git clone 
+    ```
+Install NPM packages
+    ```sh
+    npm i
+    ```
+    or
+    ```sh
+    npm install
 
 In the project directory, you can run:
 
