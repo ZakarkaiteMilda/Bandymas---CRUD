@@ -36,8 +36,8 @@ export function CarTypesTable() {
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Car type</th>
-                        <th className="text-end" scope="col">Actions</th>
+                        <th scope="col">Meistro tipas</th>
+                        <th className="text-end" scope="col">Koreguoti duomenis</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,8 +47,8 @@ export function CarTypesTable() {
                                 <td>{idx + 1}</td>
                                 <td>{carType}</td>
                                 <td className="d-flex gap-2 justify-content-end">
-                                    <Link className="btn btn-primary btn-sm" to={`/car-types/${carType}/edit`}>Edit</Link>
-                                    <button onClick={() => deleteCarTypeHandler(carType)} className="btn btn-danger btn-sm" type="button">Delete</button>
+                                    <Link className="btn btn-primary btn-sm" to={`/car-types/${carType}/edit`}>Koreguoti</Link>
+                                    <button onClick={() => deleteCarTypeHandler(carType)} className="btn btn-danger btn-sm" type="button">Ištrinti</button>
                                 </td>
                             </tr>
                         ))
