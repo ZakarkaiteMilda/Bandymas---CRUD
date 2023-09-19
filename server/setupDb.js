@@ -121,9 +121,22 @@ async function generateRoles(db) {
 async function generateUsers(db) {
     try {
         const sql = `INSERT INTO users (fullname, email, password_hash, role_id) 
-                    VALUES ('Chuck Norris', 'chuck@norris.com', '${hash('chuck@norris.com')}', 1),
-                        ('Jonas Jonaitis', 'jonas@jonas.lt', '${hash('jonas@jonas.lt')}', 2),
-                        ('Ona Onaityte', 'ona@ona.lt', '${hash('ona@ona.lt')}', 2);`;
+                    VALUES ('Milda Zakarkaite', 'seira.zizel@gmail.com', '${hash('seira.zizel@gmail.com')}', 1),
+                        ('Vardas Vardaitis', 'vardas@vardas.lt', '${hash('vardas@vardas.lt')}', 2),
+                        ('Pavarde Pavardyte', 'pavarde@pavarde.lt', '${hash('pavarde@pavarde.lt')}', 2);`;
+        await db.execute(sql);
+    } catch (error) {
+        console.log('Nepavyko sugeneruoti "roles" lenteles turinio');
+        console.log(error);
+        throw error;
+    }
+}
+
+async function generateCarTypes(db) {
+    const carTypes = ['Langų', 'Durų', 'Ratų'];
+    try {
+        const sql = `INSERT INTO \`car-types\` (title) 
+                    VALUES ${carTypes.map(s => `("${s}")`).join(', ')};`;
         await db.execute(sql);
     } catch (error) {
         console.log('Nepavyko sugeneruoti "roles" lenteles turinio');
