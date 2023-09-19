@@ -24,14 +24,11 @@ async function setupDb() {
         await usersTable(connection);
         await tokensTable(connection);
         await carTypesTable(connection);
-        await steeringWheelTable(connection);
-        await carsTable(connection);
 
         // Uzpildome informacija
         await generateRoles(connection);
         await generateUsers(connection);
         await generateCarTypes(connection);
-        await generateSteeringWheel(connection);
     }
 
     return connection;
@@ -108,51 +105,7 @@ async function carTypesTable(db) {
     }
 }
 
-async function steeringWheelTable(db) {
-    try {
-        const sql = `CREATE TABLE \`steering-wheel\` (
-                        id int(1) NOT NULL AUTO_INCREMENT,
-                        side varchar(10) NOT NULL,
-                        PRIMARY KEY (id)
-                    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4`;
-        await db.execute(sql);
-    } catch (error) {
-        console.log('Nepavyko sukurti "steering-wheel" lenteles');
-        console.log(error);
-        throw error;
-    }
-}
 
-async function carsTable(db) {
-    try {
-        const sql = `CREATE TABLE cars (
-                        id int(10) NOT NULL AUTO_INCREMENT,
-                        user_id int(10) NOT NULL,
-                        car_type_id int(10) NOT NULL,
-                        title varchar(200) NOT NULL,
-                        color varchar(50) NOT NULL,
-                        price int(6) unsigned NOT NULL DEFAULT 0,
-                        year int(4) unsigned NOT NULL,
-                        steering_wheel_id int(1) NOT NULL DEFAULT 0,
-                        location varchar(50) NOT NULL,
-                        mileage int(10) unsigned NOT NULL DEFAULT 0,
-                        image varchar(100) NOT NULL,
-                        created timestamp NOT NULL DEFAULT current_timestamp(),
-                        PRIMARY KEY (id),
-                        KEY user_id (user_id),
-                        KEY car_type_id (car_type_id),
-                        KEY steering_wheel_id (steering_wheel_id),
-                        CONSTRAINT cars_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id),
-                        CONSTRAINT cars_ibfk_2 FOREIGN KEY (steering_wheel_id) REFERENCES \`steering-wheel\` (id),
-                        CONSTRAINT cars_ibfk_3 FOREIGN KEY (car_type_id) REFERENCES \`car-types\` (id)
-                    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4`;
-        await db.execute(sql);
-    } catch (error) {
-        console.log('Nepavyko sukurti "cars" lenteles');
-        console.log(error);
-        throw error;
-    }
-}
 
 async function generateRoles(db) {
     try {
@@ -179,30 +132,5 @@ async function generateUsers(db) {
     }
 }
 
-async function generateCarTypes(db) {
-    const carTypes = ['SUV', 'Sedan', 'Hatchback'];
-    try {
-        const sql = `INSERT INTO \`car-types\` (title) 
-                    VALUES ${carTypes.map(s => `("${s}")`).join(', ')};`;
-        await db.execute(sql);
-    } catch (error) {
-        console.log('Nepavyko sugeneruoti "roles" lenteles turinio');
-        console.log(error);
-        throw error;
-    }
-}
-
-async function generateSteeringWheel(db) {
-    const steeringWheelSides = ['left', 'right', 'center', 'none', 'both'];
-    try {
-        const sql = `INSERT INTO \`steering-wheel\` (side) 
-                    VALUES ${steeringWheelSides.map(s => `("${s}")`).join(', ')};`;
-        await db.execute(sql);
-    } catch (error) {
-        console.log('Nepavyko sugeneruoti "streering-wheel" lenteles turinio');
-        console.log(error);
-        throw error;
-    }
-}
 
 export const connection = await setupDb();
