@@ -7,6 +7,6 @@ export function Title({ title, uri }) {
             <div className="btn-toolbar mb-2 mb-md-0">
                 {uri ? <Link className="btn btn-primary" to={uri}>Create new</Link> : null}
             </div>
-        </div>
+        </div>  
     )
 }
