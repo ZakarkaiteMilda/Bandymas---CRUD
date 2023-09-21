@@ -32,7 +32,7 @@ function App() {
           <Route Component={PublicLayout}>
             <Route path='*' element={<NoPage />}></Route>
           </Route>
-        </Routes>
+        </Routes>    
       </BrowserRouter>
     </ContextWrapper>
   );
