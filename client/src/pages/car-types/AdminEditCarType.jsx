@@ -48,12 +48,12 @@ export function AdminEditCarType() {
                 </div>
                 <form onSubmit={submitHandler} className="col-12 col-sm-8 col-md-6 col-lg-4">
                     <div className="mb-3">
-                        <label className="form-label" htmlFor="carType">Car type</label>
+                        <label className="form-label" htmlFor="carType">Redaguoti</label>
                         <input onChange={e => setText(e.target.value)} value={text} type="text" className="form-control" id="carType" />
                     </div>
 
-                    <button className="btn btn-primary py-2" type="submit">Update</button>
-                    <Link className="btn btn btn-outline-secondary py-2" to="/car-types">Cancel</Link>
+                    <button className="btn btn-primary py-2" type="submit">Atnaujinti</button>
+                    <Link className="btn btn btn-outline-secondary py-2" to="/car-types">Atšaukti</Link>
                 </form>
             </div>
         </div>
